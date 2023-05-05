@@ -1,15 +1,19 @@
-const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
+const {
+  shareAll,
+  withModuleFederationPlugin,
+} = require("@angular-architects/module-federation/webpack");
 
 module.exports = withModuleFederationPlugin({
-
-  name: 'mf-payment',
-
+  name: "mf-payment",
   exposes: {
-    './Component': './projects/mf-payment/src/app/app.component.ts',
+    "./Component": "./projects/mf-payment/src/app/app.component.ts",
   },
-
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    ...shareAll({
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    }),
   },
-
+  sharedMappings: ["@common-lib"],
 });
